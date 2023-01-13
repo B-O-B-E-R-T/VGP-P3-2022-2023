@@ -6,10 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     private float speed = 10.0f;
-    private float zBound = 11;
-    private float zNewPos = 10f;
-    private float xBound = 25;
-    private float xNewPos = 24;
+    private float zBound = 9;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -35,17 +33,12 @@ public class PlayerController : MonoBehaviour
     void CheckBoundaries()
     {
         if (transform.position.z > zBound){
-            transform.position = new Vector3(transform.position.x, transform.position.y, -zNewPos);
+            transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
         }
         if (transform.position.z < -zBound){
-            transform.position = new Vector3(transform.position.x, transform.position.y, zNewPos);
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zBound);
         }
 
-        if (transform.position.x > xBound){
-            transform.position = new Vector3(-xNewPos, transform.position.y, transform.position.z);
-        }
-        if (transform.position.x < -xBound){
-            transform.position = new Vector3(xNewPos, transform.position.y, transform.position.z);
-        }
+        
     }
 }
