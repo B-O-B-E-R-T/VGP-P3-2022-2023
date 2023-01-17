@@ -7,10 +7,13 @@ public class PlayerControllerX : MonoBehaviour
     private Rigidbody playerRb;
     private float speed = 500;
     private GameObject focalPoint;
-
+    private bool speedBoost = false;
+    private float speedMultiplier;
     public bool hasPowerup;
     public GameObject powerupIndicator;
+    //public GameObject speedBoostIndicator;
     public int powerUpDuration = 5;
+    public int speedBoostDuration = 1;
 
     private float normalStrength = 10; // how hard to hit enemy without powerup
     private float powerupStrength = 25; // how hard to hit enemy with powerup
@@ -25,10 +28,15 @@ public class PlayerControllerX : MonoBehaviour
     {
         // Add force to player in direction of the focal point (and camera)
         float verticalInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(focalPoint.transform.forward * verticalInput * speed * Time.deltaTime); 
+        playerRb.AddForce(focalPoint.transform.forward * verticalInput * speedMultiplier * speed * Time.deltaTime); 
 
         // Set powerup indicator position to beneath player
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
+
+        //
+        
+
+        SpeedBoost();
 
     }
 
@@ -40,6 +48,7 @@ public class PlayerControllerX : MonoBehaviour
             Destroy(other.gameObject);
             hasPowerup = true;
             powerupIndicator.SetActive(true);
+            
             StartCoroutine(PowerupCooldown());
         }
     }
@@ -50,6 +59,7 @@ public class PlayerControllerX : MonoBehaviour
         yield return new WaitForSeconds(powerUpDuration);
         hasPowerup = false;
         powerupIndicator.SetActive(false);
+        
     }
 
     // If Player collides with enemy
@@ -72,7 +82,26 @@ public class PlayerControllerX : MonoBehaviour
 
         }
     }
+    private void SpeedBoost(){
+        if (Input.GetKeyDown(KeyCode.Space)){
+            
+            //speedBoostIndicator.SetActive(true);
+            speedBoost = true;
+            StartCoroutine(SpeedBoostCooldown());
+            
+        }
+         if (speedBoost == true){
+         speedMultiplier = 2;
+         } else{ speedMultiplier = 1; }
 
+    }
+    IEnumerator SpeedBoostCooldown()
+    {
+        yield return new WaitForSeconds(speedBoostDuration);
+        speedBoost = false;
+        //speedBoostIndicator.SetActive(false);
+        
+    }
 
 
 }
