@@ -11,7 +11,7 @@ public class PlayerControllerX : MonoBehaviour
     private float speedMultiplier;
     public bool hasPowerup;
     public GameObject powerupIndicator;
-    //public GameObject speedBoostIndicator;
+    public ParticleSystem boostParticle;
     public int powerUpDuration = 5;
     public int speedBoostDuration = 1;
 
@@ -86,20 +86,21 @@ public class PlayerControllerX : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)){
             
             //speedBoostIndicator.SetActive(true);
+            boostParticle.Play();
             speedBoost = true;
             StartCoroutine(SpeedBoostCooldown());
             
         }
-         if (speedBoost == true){
-         speedMultiplier = 2;
-         } else{ speedMultiplier = 1; }
+        if (speedBoost == true){
+            speedMultiplier = 2;
+        } else{ speedMultiplier = 1; }
 
     }
     IEnumerator SpeedBoostCooldown()
     {
         yield return new WaitForSeconds(speedBoostDuration);
         speedBoost = false;
-        //speedBoostIndicator.SetActive(false);
+        
         
     }
 
