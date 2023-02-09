@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    private float speed = 15.0f;
+    private float speed = 500.0f;
     private float zBound = 9;
     
     // Start is called before the first frame update
@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
         playerRb.AddForce(Vector3.forward * speed * verticalInput);
         playerRb.AddForce(Vector3.right * speed * horizontalInput);
+
+        
     }
     //Prevent the player from leaving from all sides of the screen
     void CheckBoundaries()
@@ -40,5 +42,18 @@ public class PlayerController : MonoBehaviour
         }
 
         
+    }
+    private void OnCollisionEnter(Collision collision){
+        if (collision.gameObject.CompareTag("Enemy")){
+            Debug.Log("Player has collided with an enemy");
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Powerup"))
+        {
+            Destroy(other.gameObject);
+           
+        }
     }
 }
