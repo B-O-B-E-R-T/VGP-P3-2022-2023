@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", startDelay, enemySpawnTime);
+        InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawnTime);
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
     }
 
@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    void SpawnEnemy(){
+    void SpawnRandomEnemy(){
         float randomX = Random.Range(-xSpawnRange, xSpawnRange);
         int randomIndex = Random.Range(0, enemies.Length);
 
