@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManagerX : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText;
     public TextMeshProUGUI gameOverText;
     public GameObject titleScreen;
     public Button restartButton; 
@@ -15,6 +16,8 @@ public class GameManagerX : MonoBehaviour
     public List<GameObject> targetPrefabs;
 
     private int score;
+    public int timeOfRound = 60;
+    private int secondsToEnd;
     private float spawnRate = 1.5f;
     public bool isGameActive;
 
@@ -28,9 +31,13 @@ public class GameManagerX : MonoBehaviour
         spawnRate /= difficulty;
         isGameActive = true;
         StartCoroutine(SpawnTarget());
+        secondsToEnd = timeOfRound;
+        StartCoroutine(Timer());
         score = 0;
         UpdateScore(0);
         titleScreen.SetActive(false);
+        scoreText.gameObject.SetActive(true);
+        timerText.gameObject.SetActive(true);
     }
 
     // While game is active spawn a random target
@@ -73,6 +80,12 @@ public class GameManagerX : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
 
+    //Update the timer text
+    public void UpdateTimer()
+    {
+        timerText.text = "Time: " + secondsToEnd;
+    }
+
     // Stop game, bring up game over text and restart button
     public void GameOver()
     {
@@ -87,4 +100,16 @@ public class GameManagerX : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    IEnumerator Timer(){
+        while(isGameActive){
+            UpdateTimer();
+
+            if (secondsToEnd == 0){
+                GameOver();
+            }
+
+            yield return new WaitForSeconds(1); 
+            secondsToEnd--;
+        } 
+    }
 }
