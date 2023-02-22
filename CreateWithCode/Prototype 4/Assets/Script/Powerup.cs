@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PowerupType {none, knockback, pellets};
+public enum PowerupType {None, Knockback, Pellets};
 
 public class Powerup : MonoBehaviour
 {
 
 
-    [SerializeField] private PowerupType _poweruptype;
+    public PowerupType powerupType;
     // Start is called before the first frame update
     void Start()
     {
