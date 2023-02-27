@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PowerupType {None, Knockback, Pellets};
+public enum PowerupType { None, Knockback, Pellets }
 
 public class Powerup : MonoBehaviour
 {

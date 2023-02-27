@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     public bool hasPowerup;
 
-    public PowerupType currentPowerUp = PowerupType.None;
+    public PowerupType currentPowerup = PowerupType.None;
 
     public GameObject pelletPrefab;
     private GameObject tmpPellet;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
 
-        if (currentPowerUp == PowerupType.Pellets && Input.GetKeyDown(KeyCode.F))
+        if (currentPowerup == PowerupType.Pellets && Input.GetKeyDown(KeyCode.F))
         {
             LaunchRockets();
         }
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Powerup")){
             hasPowerup = true;
-            currentPowerUp = other.gameObject.GetComponent<Powerup>().PowerupType;
+            currentPowerup = other.gameObject.GetComponent<Powerup>().powerupType;
             powerupIndicator.gameObject.SetActive(true);
             Destroy(other.gameObject);
 
@@ -57,12 +57,12 @@ public class PlayerController : MonoBehaviour
     IEnumerator PowerupCountdownRoutine(){
         yield return new WaitForSeconds(7);
         hasPowerup = false;
-        currentPowerUp = PowerupType.None;
+        currentPowerup = PowerupType.None;
         powerupIndicator.gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision){
-        if (collision.gameObject.CompareTag("Enemy") && currentPowerUp == PowerupType.Knockback){
+        if (collision.gameObject.CompareTag("Enemy") && currentPowerup == PowerupType.Knockback){
 
             Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
             enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
 
-            Debug.Log("Player collided with: " + collision.gameObject.name + " with powerup set to " + currentPowerUp.ToString());
+            Debug.Log("Player collided with: " + collision.gameObject.name + " with powerup set to " + currentPowerup.ToString());
 
         }
     }
