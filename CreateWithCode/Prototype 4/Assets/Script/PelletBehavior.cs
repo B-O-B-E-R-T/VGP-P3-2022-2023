@@ -28,7 +28,7 @@ public class PelletBehavior : MonoBehaviour
     }
 
     public void Fire(Transform newTarget){
-        target = homingTarget;
+        //target = homingTarget;
         homing = true;
         Destroy(gameObject, aliveTimer);
     }

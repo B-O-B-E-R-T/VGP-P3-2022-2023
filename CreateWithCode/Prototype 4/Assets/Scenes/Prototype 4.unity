@@ -744,13 +744,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130455db025bf6b4bae248b19c20840b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 8341695642560530837, guid: fefed41a2b36c6b4fa00606a89807fa5, type: 3}
-  - {fileID: 8341695642560530837, guid: fefed41a2b36c6b4fa00606a89807fa5, type: 3}
-  - {fileID: 4397660496214826001, guid: 53ff54236153ad34ca768b3d3b8d9f9b, type: 3}
+  enemyPrefab: {fileID: 8341695642560530837, guid: fefed41a2b36c6b4fa00606a89807fa5, type: 3}
   powerupPrefab: {fileID: 5503083304067918486, guid: 7312fd88ea6015d4dbc2c0113ed2b214, type: 3}
-  powerupPrefab1: {fileID: 5503083304067918486, guid: 7312fd88ea6015d4dbc2c0113ed2b214, type: 3}
-  powerupPrefab2: {fileID: 5154815189485664231, guid: e6494ac81592edb48b1bec287e5bc9e5, type: 3}
   enemyCount: 0
   waveNumber: 1
 --- !u!4 &1784253175

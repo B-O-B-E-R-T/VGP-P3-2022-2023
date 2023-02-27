@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         foreach(var enemy in FindObjectsOfType<Enemy>())
         {
             tmpPellet = Instantiate(pelletPrefab, transform.position + Vector3.up, Quaternion.identity);
-            tmpPellet.GetComponent<PelletBehaviour>().Fire(enemy.transform);
+            tmpPellet.GetComponent<PelletBehavior>().Fire(enemy.transform);
         }
     }
 }
