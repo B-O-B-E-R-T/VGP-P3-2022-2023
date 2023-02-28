@@ -402,7 +402,7 @@ MonoBehaviour:
   speed: 5
   hasPowerup: 0
   currentPowerup: 0
-  pelletPrefab: {fileID: 0}
+  pelletPrefab: {fileID: 9101644755264242944, guid: 76eed7d3fe0998344900e6853f46f9ac, type: 3}
 --- !u!1 &760059617 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1742899641471652, guid: 923deea38dc6a8843b15db7638919c1e, type: 3}
@@ -751,6 +751,7 @@ MonoBehaviour:
   - {fileID: 4397660496214826001, guid: 53ff54236153ad34ca768b3d3b8d9f9b, type: 3}
   powerupPrefabs:
   - {fileID: 5503083304067918486, guid: 7312fd88ea6015d4dbc2c0113ed2b214, type: 3}
+  - {fileID: 282895628105850275, guid: b5929bf6b5d3faf4699155f7a01f6def, type: 3}
   enemyCount: 0
   waveNumber: 1
 --- !u!4 &1784253175
