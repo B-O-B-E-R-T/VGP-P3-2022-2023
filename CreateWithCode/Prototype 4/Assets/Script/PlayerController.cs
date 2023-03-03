@@ -11,18 +11,14 @@ public class PlayerController : MonoBehaviour
     private float powerupStrength = 15.0f;
     public float speed = 5.0f;
     public bool hasPowerup;
-
     public PowerupType currentPowerup = PowerupType.None;
-
     public GameObject pelletPrefab;
     private GameObject tmpPellet;
     private Coroutine powerupCountdown;
-
     public float hangTime;
     public float smashSpeed;
     public float explosionForce;
     public float explosionRadius;
-
     bool smashing = false;
     float floorY;
 
@@ -37,20 +33,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float forwardInput = Input.GetAxis("Vertical");
-
         playerRb.AddForce(focalPoint.transform.forward * forwardInput * speed);
         powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
 
         if (currentPowerup == PowerupType.Pellets && Input.GetKeyDown(KeyCode.F)){
             LaunchRockets();
         }
-
         if(currentPowerup == PowerupType.Smash && Input.GetKeyDown(KeyCode.Space) && !smashing){
             smashing = true;
             StartCoroutine(Smash());
         }
-
-
     }
 
     private void OnTriggerEnter(Collider other){
@@ -124,10 +116,8 @@ public class PlayerController : MonoBehaviour
         }
     }
     
-    void LaunchRockets()
-    {
-        foreach(var enemy in FindObjectsOfType<Enemy>())
-        {
+    void LaunchRockets(){
+        foreach(var enemy in FindObjectsOfType<Enemy>()){
             tmpPellet = Instantiate(pelletPrefab, transform.position + Vector3.up, Quaternion.identity);
             tmpPellet.GetComponent<PelletBehavior>().Fire(enemy.transform);
         }
