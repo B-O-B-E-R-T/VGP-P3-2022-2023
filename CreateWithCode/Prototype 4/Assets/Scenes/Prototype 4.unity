@@ -306,7 +306,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549150578}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -403,12 +403,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupIndicator: {fileID: 760059617}
-  speed: 15
+  speed: 10
   hasPowerup: 0
-  currentPowerup: 3
+  currentPowerup: 0
   pelletPrefab: {fileID: 9101644755264242944, guid: 76eed7d3fe0998344900e6853f46f9ac, type: 3}
-  hangTime: 1
-  smashSpeed: 5
+  hangTime: 0.25
+  smashSpeed: 10
   explosionForce: 40
   explosionRadius: 10
 --- !u!1 &760059617 stripped
