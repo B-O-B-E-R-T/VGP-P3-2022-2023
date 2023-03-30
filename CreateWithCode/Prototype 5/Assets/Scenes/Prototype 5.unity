@@ -1387,7 +1387,7 @@ MonoBehaviour:
   gameOverText: {fileID: 1956756304}
   restartButton: {fileID: 1351444794}
   titleScreen: {fileID: 354161210}
-  isGameActive: 1
+  isGameActive: 0
   livesText: {fileID: 290518809}
   pauseScreen: {fileID: 1478101175}
 --- !u!4 &855790891
