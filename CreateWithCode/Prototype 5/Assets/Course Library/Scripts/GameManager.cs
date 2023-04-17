@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
         lives += livesToChange;
         livesText.text = "Lives: " + lives;
         if (lives <= 0){
+            lives = 0;
+            livesText.text = "Lives: " + lives;
             GameOver();
         }
     }
