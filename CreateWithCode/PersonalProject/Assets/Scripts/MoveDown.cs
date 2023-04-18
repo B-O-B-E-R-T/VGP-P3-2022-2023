@@ -11,7 +11,7 @@ public class MoveDown : MonoBehaviour
     void Start()
     {
         objectRb = GetComponent<Rigidbody>();
-         objectRb.AddForce(Vector3.forward * 50, ForceMode.Impulse);
+         objectRb.AddForce(Vector3.forward * -speed * 5, ForceMode.Impulse);
     }
 
     // Update is called once per frame
