@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
         playerRb.AddForce(Vector3.forward * speed * verticalInput);
         playerRb.AddForce(Vector3.right * speed * horizontalInput);
 
-        
     }
     //Prevent the player from leaving from all sides of the screen
     void CheckBoundaries()
