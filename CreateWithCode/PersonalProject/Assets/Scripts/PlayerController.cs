@@ -7,7 +7,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private float speed = 600.0f;
     private float zBound = 9;
-    
+    private bool speedBoost = false;
+    private float speedMultiplier;
+
+    public int speedBoostDuration = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +30,10 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        playerRb.AddForce(Vector3.forward * speed * verticalInput);
-        playerRb.AddForce(Vector3.right * speed * horizontalInput);
+        playerRb.AddForce(Vector3.forward * speed * speedMultiplier * verticalInput);
+        playerRb.AddForce(Vector3.right * speed * speedMultiplier * horizontalInput);
 
+        SpeedBoost();
     }
     //Prevent the player from leaving from all sides of the screen
     void CheckBoundaries()
@@ -54,5 +59,19 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
            
         }
+    }
+    private void SpeedBoost(){
+        if (Input.GetKeyDown(KeyCode.Space)){
+            speedBoost = true;
+            StartCoroutine(SpeedBoostCooldown());
+        }
+        if (speedBoost == true){
+            speedMultiplier = 10;
+        } else{ speedMultiplier = 1; }
+
+    }
+    IEnumerator SpeedBoostCooldown(){
+        yield return new WaitForSeconds(speedBoostDuration);
+        speedBoost = false;
     }
 }
