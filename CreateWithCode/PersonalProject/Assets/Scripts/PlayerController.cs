@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    private float speed = 600.0f;
+    private float speed = 10.0f;
     private float zBound = 9;
     private bool speedBoost = false;
     private float speedMultiplier;
@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        playerRb.AddForce(Vector3.forward * speed * speedMultiplier * verticalInput);
-        playerRb.AddForce(Vector3.right * speed * speedMultiplier * horizontalInput);
+        playerRb.AddForce(Vector3.back * speed * speedMultiplier * horizontalInput);
+        playerRb.AddForce(Vector3.right * speed * speedMultiplier * verticalInput);
 
         SpeedBoost();
     }
@@ -66,12 +66,12 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(SpeedBoostCooldown());
         }
         if (speedBoost == true){
-            speedMultiplier = 10;
+            speedMultiplier = 20;
         } else{ speedMultiplier = 1; }
 
     }
     IEnumerator SpeedBoostCooldown(){
-        yield return new WaitForSeconds(speedBoostDuration);
+        yield return new WaitForSeconds(0.01f);
         speedBoost = false;
     }
 }
