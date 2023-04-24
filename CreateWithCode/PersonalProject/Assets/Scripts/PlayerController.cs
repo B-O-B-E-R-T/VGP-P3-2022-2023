@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    private float speed = 10.0f;
-    private float zBound = 9;
+    private float speed = 30.0f;
+    private float zBound = 20;
     private bool speedBoost = false;
     private float speedMultiplier;
 
@@ -41,9 +41,11 @@ public class PlayerController : MonoBehaviour
         if (transform.position.z > zBound){
             transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
         }
+        /*
         if (transform.position.z < -zBound){
             transform.position = new Vector3(transform.position.x, transform.position.y, -zBound);
         }
+        */
 
         
     }
