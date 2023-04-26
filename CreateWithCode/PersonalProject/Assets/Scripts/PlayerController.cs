@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        playerRb.AddForce(Vector3.back * speed * speedMultiplier * horizontalInput);
-        playerRb.AddForce(Vector3.right * speed * speedMultiplier * verticalInput);
+        playerRb.AddForce(Vector3.forward * speed * speedMultiplier * verticalInput);
+        playerRb.AddForce(Vector3.right * speed * speedMultiplier * horizontalInput);
 
         SpeedBoost();
     }
