@@ -41,11 +41,11 @@ public class PlayerController : MonoBehaviour
         if (transform.position.z > zBound){
             transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
         }
-        /*
+        
         if (transform.position.z < -zBound){
             transform.position = new Vector3(transform.position.x, transform.position.y, -zBound);
         }
-        */
+        
 
         
     }
