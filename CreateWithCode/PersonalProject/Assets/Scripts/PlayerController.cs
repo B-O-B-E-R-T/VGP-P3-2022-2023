@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private bool speedBoost = false;
     private float speedMultiplier;
 
+    public GameObject stars;
+
     public int speedBoostDuration = 1;
 
     // Start is called before the first frame update
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("Enemy")){
+            stars.SetActive(true);
+            StartCoroutine(Dizzy());
             Debug.Log("Player has collided with an enemy");
         }
     }
@@ -75,5 +79,9 @@ public class PlayerController : MonoBehaviour
     IEnumerator SpeedBoostCooldown(){
         yield return new WaitForSeconds(0.01f);
         speedBoost = false;
+    }
+    IEnumerator Dizzy(){
+        yield return new WaitForSeconds(5.0f);
+        stars.SetActive(false);
     }
 }

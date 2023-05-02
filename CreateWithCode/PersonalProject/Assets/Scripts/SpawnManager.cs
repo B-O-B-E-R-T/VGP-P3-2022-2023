@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] enemies;
-    public GameObject powerup;
+    public GameObject[] powerups;
 
     private float zEnemySpawn = 70.0f;
     private float xSpawnRange = 8.0f;
@@ -44,9 +44,9 @@ public class SpawnManager : MonoBehaviour
     void SpawnPowerup(){
         float randomX = Random.Range(-xSpawnRange, xSpawnRange);
         float randomZ = Random.Range(-zPowerupRange, zPowerupRange);
-
         Vector3 spawnPos = new Vector3(randomX, ySpawn, randomZ);
+        int randomIndex = Random.Range(0, powerups.Length);
 
-        Instantiate(powerup, spawnPos, powerup.gameObject.transform.rotation);
+        Instantiate(powerups[randomIndex], spawnPos, powerups[randomIndex].gameObject.transform.rotation);
     }
 }
