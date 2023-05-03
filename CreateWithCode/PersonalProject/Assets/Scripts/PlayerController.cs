@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private bool speedBoost = false;
     private float speedMultiplier;
 
+    public GameObject rocket;
+
     public GameObject stars;
 
     public int speedBoostDuration = 1;
@@ -25,6 +27,10 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         CheckBoundaries();
+
+        if (Input.GetKeyDown(KeyCode.G)){
+            Instantiate(rocket);
+        }
     }
     //Move the player by arrow key input
     void MovePlayer()

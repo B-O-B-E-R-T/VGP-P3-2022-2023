@@ -602,6 +602,10 @@ PrefabInstance:
       propertyPath: stars
       value: 
       objectReference: {fileID: 860865079}
+    - target: {fileID: 8395786028726082389, guid: 37753343ce1b638478afbcea56e28255, type: 3}
+      propertyPath: rocket
+      value: 
+      objectReference: {fileID: 8440721840119673322, guid: ee76030da463dac4b98c551d5cdde799, type: 3}
     - target: {fileID: 8395786028726082390, guid: 37753343ce1b638478afbcea56e28255, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1082,7 +1086,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &792266233
 MeshRenderer:
