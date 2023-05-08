@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     private float speed = 30.0f;
-    private float bound = 20;
+    private float bound = 18;
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +38,14 @@ public class PlayerController : MonoBehaviour
     //Prevent the player from leaving from all sides of the screen
     void CheckBoundaries()
     {
+        /*
         if (transform.position.z > bound){
             transform.position = new Vector3(transform.position.x, transform.position.y, bound);
         }
         if (transform.position.z < -bound){
             transform.position = new Vector3(transform.position.x, transform.position.y, -bound);
         }
-        
+        */
         if (transform.position.x > bound){
             transform.position = new Vector3(bound, transform.position.y, transform.position.z);
         }
