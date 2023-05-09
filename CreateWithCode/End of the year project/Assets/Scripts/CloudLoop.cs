@@ -5,21 +5,20 @@ using UnityEngine;
 public class CloudLoop : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float xBound = -25f;
-    private Rigidbody cloudRb;
+    private float xBound = 90f;
     // Start is called before the first frame update
     void Start()
     {
-        objectRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        objectRb.AddForce(Vector3.forward * -speed);
+        //cloudRb.AddForce(Vector3.left * speed);
+        transform.position += transform.right * -speed * Time.deltaTime;
 
-            if (transform.position.x < -xBound){
-                Destroy(gameObject);
-            }
+        if (transform.position.x < -xBound){
+            transform.position = new Vector3(70, transform.position.y, transform.position.z);
+        }
     }
 }
