@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CloudLoop : MonoBehaviour
+public class Loop : MonoBehaviour
 {
     public float speed = 5.0f;
-    private float xBound = 90f;
+    public float xBound = 90f;
+    public float returnPoint = 70f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class CloudLoop : MonoBehaviour
         transform.position += transform.right * -speed * Time.deltaTime;
 
         if (transform.position.x < -xBound){
-            transform.position = new Vector3(70, transform.position.y, transform.position.z);
+            transform.position = new Vector3(returnPoint, transform.position.y, transform.position.z);
         }
     }
 }
