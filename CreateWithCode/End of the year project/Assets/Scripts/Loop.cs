@@ -18,7 +18,7 @@ public class Loop : MonoBehaviour
         //cloudRb.AddForce(Vector3.left * speed);
         transform.position += transform.right * -speed * Time.deltaTime;
 
-        if (transform.position.x < -xBound){
+        if (transform.position.x <= -xBound){
             transform.position = new Vector3(returnPoint, transform.position.y, transform.position.z);
         }
     }
