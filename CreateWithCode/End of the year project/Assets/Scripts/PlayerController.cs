@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float speed = 30.0f;
     private float bound = 18;
 
+    public GameObject rocket;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,9 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         CheckBoundaries();
 
+        if (Input.GetKeyDown(KeyCode.G)){
+            Instantiate(rocket);
+        }
     }
     //Move the player by arrow key input
     void MovePlayer()
