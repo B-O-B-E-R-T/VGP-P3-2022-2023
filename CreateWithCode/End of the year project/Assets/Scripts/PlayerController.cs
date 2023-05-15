@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private float speed = 30.0f;
     private float bound = 18;
+    private float rocketCooldown = 1f;
+    private bool canShoot = true;
 
     public GameObject rocket;
 
@@ -22,8 +24,11 @@ public class PlayerController : MonoBehaviour
         MovePlayer();
         CheckBoundaries();
 
-        if (Input.GetKeyDown(KeyCode.G)){
-            Instantiate(rocket);
+        if (Input.GetKeyDown(KeyCode.G) && canShoot){
+            Instantiate(rocket, playerRb.position+(transform.right*2), transform.rotation);
+            canShoot = false;
+            StartCoroutine(RocketCooldown());
+            Debug.Log("Function");
         }
     }
     //Move the player by arrow key input
@@ -34,10 +39,6 @@ public class PlayerController : MonoBehaviour
 
         playerRb.AddForce(Vector3.forward * speed * verticalInput);
         playerRb.AddForce(Vector3.right * speed * horizontalInput);
-
-        if (Input.GetKeyDown(KeyCode.Space)){
-            Jump();
-        }
 
     }
     //Prevent the player from leaving from all sides of the screen
@@ -60,9 +61,6 @@ public class PlayerController : MonoBehaviour
         }
 
         
-    }
-    void Jump(){
-        playerRb.AddForce(Vector3.up * speed);
     }
     /*
     private void OnCollisionEnter(Collision collision){
@@ -100,4 +98,9 @@ public class PlayerController : MonoBehaviour
         stars.SetActive(false);
     }
     */
+    IEnumerator RocketCooldown(){
+        yield return new WaitForSeconds(rocketCooldown);
+        canShoot = true;
+        Debug.Log("Thing");
+    }
 }
