@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private bool canShoot = true;
 
     public GameObject rocket;
-
+    public GameObject explosionEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,15 +62,14 @@ public class PlayerController : MonoBehaviour
 
         
     }
-    /*
+    
     private void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("Enemy")){
-            //stars.SetActive(true);
-            //StartCoroutine(Dizzy());
+            Instantiate(explosionEffect, playerRb.position, transform.rotation);
             Debug.Log("Player has collided with an enemy");
         }
     }
-    
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Powerup"))

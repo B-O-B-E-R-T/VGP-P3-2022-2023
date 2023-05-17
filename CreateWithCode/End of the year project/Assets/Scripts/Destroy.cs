@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class Destroy : MonoBehaviour
 {
-    private float speed = 1.0f;
+    public float waitTime = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(Countdown());
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.right * speed * Time.deltaTime;
+        
+    }
+    IEnumerator Countdown(){
+        yield return new WaitForSeconds(waitTime);
+        Destroy(gameObject);
     }
 }
