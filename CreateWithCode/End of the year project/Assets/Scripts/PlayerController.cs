@@ -25,7 +25,9 @@ public class PlayerController : MonoBehaviour
         CheckBoundaries();
 
         if (Input.GetKeyDown(KeyCode.G) && canShoot){
+            //https://answers.unity.com/questions/746960/instantiate-object-in-front-of-player.html
             Instantiate(rocket, playerRb.position+(transform.right*2), transform.rotation);
+
             canShoot = false;
             StartCoroutine(RocketCooldown());
             Debug.Log("Function");
@@ -40,27 +42,23 @@ public class PlayerController : MonoBehaviour
         playerRb.AddForce(Vector3.forward * speed * verticalInput);
         playerRb.AddForce(Vector3.right * speed * horizontalInput);
 
+        //https://forum.unity.com/threads/how-to-make-player-object-slightly-tilt-as-it-moves-left-and-right.121725/
+        float x = Input.GetAxis("Vertical") * 15.0f; 
+        Vector3 euler = transform.localEulerAngles;
+        euler.x = Mathf.Lerp(2.0f * Time.deltaTime, x, euler.x);
+        transform.localEulerAngles = euler;
+
     }
     //Prevent the player from leaving from all sides of the screen
     void CheckBoundaries()
     {
-        /*
-        if (transform.position.z > bound){
-            transform.position = new Vector3(transform.position.x, transform.position.y, bound);
-        }
-        if (transform.position.z < -bound){
-            transform.position = new Vector3(transform.position.x, transform.position.y, -bound);
-        }
-        */
         if (transform.position.x > bound){
             transform.position = new Vector3(bound, transform.position.y, transform.position.z);
         }
         
         if (transform.position.x < -bound){
             transform.position = new Vector3(-bound, transform.position.y, transform.position.z);
-        }
-
-        
+        }  
     }
     
     private void OnCollisionEnter(Collision collision){
@@ -69,34 +67,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player has collided with an enemy");
         }
     }
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Powerup"))
-        {
-            Destroy(other.gameObject);
-           
-        }
-    }
-    private void SpeedBoost(){
-        if (Input.GetKeyDown(KeyCode.Space)){
-            speedBoost = true;
-            StartCoroutine(SpeedBoostCooldown());
-        }
-        if (speedBoost == true){
-            speedMultiplier = 20;
-        } else{ speedMultiplier = 1; }
 
-    }
-    IEnumerator SpeedBoostCooldown(){
-        yield return new WaitForSeconds(0.01f);
-        speedBoost = false;
-    }
-    IEnumerator Dizzy(){
-        yield return new WaitForSeconds(5.0f);
-        stars.SetActive(false);
-    }
-    */
     IEnumerator RocketCooldown(){
         yield return new WaitForSeconds(rocketCooldown);
         canShoot = true;
