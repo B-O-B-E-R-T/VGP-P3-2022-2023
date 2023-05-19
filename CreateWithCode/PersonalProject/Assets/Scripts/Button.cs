@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Button : MonoBehaviour
 {
@@ -20,7 +21,9 @@ public class Button : MonoBehaviour
     {
         
     }
+    
     void SetDifficulty() {
-        gameManager.StartGame();
+        spawnManager.StartGame();
     }
+    
 }

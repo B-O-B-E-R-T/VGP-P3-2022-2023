@@ -27,7 +27,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawnTime);
+        //InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawnTime);
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
     }
 
@@ -36,27 +36,34 @@ public class SpawnManager : MonoBehaviour
     {
         
     }
+    IEnumerator SpawnRandomEnemy(){
+        while(isGameActive){
+            yield return new WaitForSeconds(enemySpawnTime);
 
-    void SpawnRandomEnemy(){
-        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
-        int randomIndex = Random.Range(0, enemies.Length);
-        Vector3 spawnPos = new Vector3(randomX, ySpawn+0.5f, zEnemySpawn);
-        Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].gameObject.transform.rotation);
+            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+            int randomIndex = Random.Range(0, enemies.Length);
+            Vector3 spawnPos = new Vector3(randomX, ySpawn+0.5f, zEnemySpawn);
 
-        for(int i = 0; i < 3; i++){
-            randomX = Random.Range(-xSpawnRange, xSpawnRange);
-            randomIndex = Random.Range(0, enemies.Length);
-            spawnPos = new Vector3(randomX, ySpawn+0.5f, zEnemySpawn);
             Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].gameObject.transform.rotation);
+
+            for(int i = 0; i < 3; i++){
+                randomX = Random.Range(-xSpawnRange, xSpawnRange);
+                randomIndex = Random.Range(0, enemies.Length);
+                spawnPos = new Vector3(randomX, ySpawn+0.5f, zEnemySpawn);
+                Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].gameObject.transform.rotation);
+            }
         }
     }
     void SpawnPowerup(){
-        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
-        float randomZ = Random.Range(-zPowerupRange, zPowerupRange);
-        Vector3 spawnPos = new Vector3(randomX, ySpawn, randomZ);
-        int randomIndex = Random.Range(0, powerups.Length);
+        while(isGameActive){
+            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+            float randomZ = Random.Range(-zPowerupRange, zPowerupRange);
+            Vector3 spawnPos = new Vector3(randomX, ySpawn, randomZ);
+            int randomIndex = Random.Range(0, powerups.Length);
 
-        Instantiate(powerups[randomIndex], spawnPos, powerups[randomIndex].gameObject.transform.rotation);
+            Instantiate(powerups[randomIndex], spawnPos, powerups[randomIndex].gameObject.transform.rotation);
+        }
+        
     }
     public void UpdateLives(int livesToChange){
         lives += livesToChange;
@@ -67,10 +74,10 @@ public class SpawnManager : MonoBehaviour
             GameOver();
         }
     }
-    public void StartGame(int difficulty){
+    public void StartGame(){
         isGameActive = true;
 
-        StartCoroutine(SpawnTarget());
+        StartCoroutine(SpawnRandomEnemy());
         UpdateLives(3);
 
         titleScreen.gameObject.SetActive(false);
