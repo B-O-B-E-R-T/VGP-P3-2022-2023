@@ -3535,7 +3535,7 @@ GameObject:
   - component: {fileID: 2064172875}
   - component: {fileID: 2064172874}
   m_Layer: 0
-  m_Name: Spawn Manager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3550,21 +3550,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2064172873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b531ea952bfbf43a02bf8419bb6451, type: 3}
+  m_Script: {fileID: 11500000, guid: cd4bedfa8b93e2b4895f1e010a108006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 9200626111415264600, guid: 149004143332dc84183f65a7ff57f963, type: 3}
-  - {fileID: 2845749580724799987, guid: e644cf574bfe6d8459463f9d868bfb4b, type: 3}
-  - {fileID: 8182758551097649262, guid: 756188468d6b4c1448fe76e9544c1a88, type: 3}
-  - {fileID: 896017189454000893, guid: 0b8eebe0e4444cd4eb056039d264e741, type: 3}
-  powerups:
-  - {fileID: 3149836559938073303, guid: ad53b3fb23e8bc144a0611c0a78f225a, type: 3}
-  - {fileID: 6011357942876305320, guid: 00ae1fdcb625d26469d92f43bf981d6e, type: 3}
+  enemies: []
+  powerups: []
   titleScreen: {fileID: 0}
   isGameActive: 0
-  livesText: {fileID: 805997894}
-  gameOverText: {fileID: 510058931}
+  livesText: {fileID: 0}
+  gameOverText: {fileID: 0}
   restartButton: {fileID: 0}
 --- !u!4 &2064172875
 Transform:
