@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SpawnManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public GameObject[] enemies;
     public GameObject[] powerups;
