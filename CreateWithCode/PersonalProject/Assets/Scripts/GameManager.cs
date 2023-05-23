@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    /*
     IEnumerator SpawnRandomEnemy(){
         while(isGameActive){
             yield return new WaitForSeconds(enemySpawnTime);
@@ -54,7 +55,9 @@ public class GameManager : MonoBehaviour
                 Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].gameObject.transform.rotation);
             }
         }
+        
     }
+    */
     void SpawnPowerup(){
         while(isGameActive){
             float randomX = Random.Range(-xSpawnRange, xSpawnRange);
@@ -78,7 +81,7 @@ public class GameManager : MonoBehaviour
     public void StartGame(){
         isGameActive = true;
 
-        StartCoroutine(SpawnRandomEnemy());
+        //StartCoroutine(SpawnRandomEnemy());
         UpdateLives(3);
 
         chickenPlayer.gameObject.SetActive(true);
