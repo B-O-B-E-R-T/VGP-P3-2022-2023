@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //InvokeRepeating("SpawnRandomEnemy", startDelay, enemySpawnTime);
-        InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
+        //InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    /*
+    
     IEnumerator SpawnRandomEnemy(){
         while(isGameActive){
             yield return new WaitForSeconds(enemySpawnTime);
@@ -57,16 +57,16 @@ public class GameManager : MonoBehaviour
         }
         
     }
-    */
+    
     void SpawnPowerup(){
-        while(isGameActive){
-            float randomX = Random.Range(-xSpawnRange, xSpawnRange);
-            float randomZ = Random.Range(-zPowerupRange, zPowerupRange);
-            Vector3 spawnPos = new Vector3(randomX, ySpawn, randomZ);
-            int randomIndex = Random.Range(0, powerups.Length);
 
-            Instantiate(powerups[randomIndex], spawnPos, powerups[randomIndex].gameObject.transform.rotation);
-        }
+        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+        float randomZ = Random.Range(-zPowerupRange, zPowerupRange);
+        Vector3 spawnPos = new Vector3(randomX, ySpawn, randomZ);
+        int randomIndex = Random.Range(0, powerups.Length);
+
+        Instantiate(powerups[randomIndex], spawnPos, powerups[randomIndex].gameObject.transform.rotation);
+        
         
     }
     public void UpdateLives(int livesToChange){
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     public void StartGame(){
         isGameActive = true;
 
-        //StartCoroutine(SpawnRandomEnemy());
+        StartCoroutine(SpawnRandomEnemy());
         UpdateLives(3);
 
         chickenPlayer.gameObject.SetActive(true);

@@ -29,12 +29,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
-        CheckBoundaries();
-
-        if (Input.GetKeyDown(KeyCode.G)){
-            Instantiate(rocket);
+        while (gameManager.isGameActive){
+            MovePlayer();
+            CheckBoundaries();
+            
+            /*
+            if (Input.GetKeyDown(KeyCode.G)){
+                Instantiate(rocket);
+            }
+            */
         }
+        
     }
     //Move the player by arrow key input
     void MovePlayer()
