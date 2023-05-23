@@ -16,10 +16,14 @@ public class PlayerController : MonoBehaviour
 
     public int speedBoostDuration = 1;
 
+    private GameManager gameManager;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -61,6 +65,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy")){
             stars.SetActive(true);
             StartCoroutine(Dizzy());
+            gameManager.UpdateLives(-1);
             Debug.Log("Player has collided with an enemy");
         }
     }
