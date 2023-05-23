@@ -794,6 +794,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37753343ce1b638478afbcea56e28255, type: 3}
+--- !u!1 &484019443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8395786028726082386, guid: 37753343ce1b638478afbcea56e28255, type: 3}
+  m_PrefabInstance: {fileID: 484019442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &510058929
 GameObject:
   m_ObjectHideFlags: 0
@@ -3613,7 +3618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4bedfa8b93e2b4895f1e010a108006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chickenPlayer: {fileID: 0}
+  chickenPlayer: {fileID: 484019443}
   enemies:
   - {fileID: 9200626111415264600, guid: 149004143332dc84183f65a7ff57f963, type: 3}
   - {fileID: 2845749580724799987, guid: e644cf574bfe6d8459463f9d868bfb4b, type: 3}
