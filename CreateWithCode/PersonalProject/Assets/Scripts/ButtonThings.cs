@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class ButtonThings : MonoBehaviour
 {
-    private Button button;
+    private Button coolButton;
     private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        button = GetComponent<Button>();
+        coolButton = GetComponent<Button>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
 
-        button.onClick.AddListener(SetDifficulty);
+        coolButton.onClick.AddListener(SetDifficulty);
     }
 
     // Update is called once per frame

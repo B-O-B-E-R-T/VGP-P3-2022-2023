@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject chickenPlayer;
     public GameObject[] enemies;
     public GameObject[] powerups;
     public GameObject titleScreen;
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnRandomEnemy());
         UpdateLives(3);
 
+        chickenPlayer.gameObject.SetActive(true);
         titleScreen.gameObject.SetActive(false);
     }
     public void RestartGame(){
