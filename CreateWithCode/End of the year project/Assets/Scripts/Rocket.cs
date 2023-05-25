@@ -6,8 +6,6 @@ public class Rocket : MonoBehaviour
 {
     public float speed = 5.0f;
     private Rigidbody objectRb;
-
-    public GameObject explosionEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +17,5 @@ public class Rocket : MonoBehaviour
     void Update()
     {
         
-    }
-     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Enemy")){
-            Instantiate(explosionEffect, objectRb.position, transform.rotation);
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-        }
     }
 }

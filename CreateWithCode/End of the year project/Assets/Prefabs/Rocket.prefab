@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2765403222243199003}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  explosionEffect: {fileID: 7965674912652388052, guid: 3c5c74f294e6ca64f91f2d67713d1045, type: 3}
 --- !u!54 &2765403222243199003
 Rigidbody:
   m_ObjectHideFlags: 0

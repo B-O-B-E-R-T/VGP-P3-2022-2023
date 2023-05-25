@@ -12,10 +12,13 @@ public class PlayerController : MonoBehaviour
 
     public GameObject rocket;
     public GameObject explosionEffect;
+
+    private GameManager gameManager; 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -73,4 +76,6 @@ public class PlayerController : MonoBehaviour
         canShoot = true;
         Debug.Log("Thing");
     }
+
+    
 }

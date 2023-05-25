@@ -112,7 +112,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &1750835006713150470
 MonoBehaviour:
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  explosionEffect: {fileID: 7965674912652388052, guid: 3c5c74f294e6ca64f91f2d67713d1045, type: 3}
 --- !u!1 &1750835008418053136
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,21 +316,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 109626, guid: 670c6e451250ee7448bb1a36fb0e6647, type: 3}
   m_PrefabInstance: {fileID: 1750835007108068713}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1750835006692569753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1750835007108094291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8c548013dabab74db311b8054d2b9f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xRotationSpeed: 500
-  yRotationSpeed: 0
-  zRotationSpeed: 0
 --- !u!114 &1750835007798679801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,4 +330,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xRotationSpeed: 0
   yRotationSpeed: 500
+  zRotationSpeed: 0
+--- !u!114 &1750835006692569753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750835007108094291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c548013dabab74db311b8054d2b9f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotationSpeed: 500
+  yRotationSpeed: 0
   zRotationSpeed: 0
