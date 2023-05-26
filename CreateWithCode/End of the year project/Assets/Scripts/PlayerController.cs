@@ -67,12 +67,14 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("Enemy")){
             Instantiate(explosionEffect, playerRb.position, transform.rotation);
+            Destroy(collision.gameObject);
+            gameManager.UpdateLives(-1);
             Debug.Log("Player has collided with an enemy");
         }
     }
 
     IEnumerator RocketCooldown(){
-        yield return new WaitForSeconds(rocketCooldown);
+        yield return new WaitForSeconds(0.1f);
         canShoot = true;
         Debug.Log("Thing");
     }
