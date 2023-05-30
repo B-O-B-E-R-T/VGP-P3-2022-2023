@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   health: 1
+  points: 1
   explosionEffect: {fileID: 7965674912652388052, guid: 3c5c74f294e6ca64f91f2d67713d1045, type: 3}
 --- !u!1001 &1750835007108068713
 PrefabInstance:

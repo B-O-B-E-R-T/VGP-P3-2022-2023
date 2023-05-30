@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     public float speed = 1.0f;
     public int health = 3;
+    public int points = 5;
 
     private Rigidbody objectRb;
 
@@ -36,7 +37,7 @@ public class EnemyController : MonoBehaviour
             health--;
             Destroy(other.gameObject);
             if (health <= 0){
-                gameManager.UpdateScore(5);
+                gameManager.UpdateScore(points);
                 Instantiate(explosionEffect, objectRb.position, transform.rotation);
                 Destroy(gameObject);
             }

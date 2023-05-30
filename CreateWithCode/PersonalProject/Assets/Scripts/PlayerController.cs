@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private float zBound = 20;
     private bool speedBoost = false;
     private float speedMultiplier;
+    private bool canDash = true;
 
     public GameObject rocket;
 
@@ -76,8 +77,10 @@ public class PlayerController : MonoBehaviour
         }
     }
     private void SpeedBoost(){
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space) && canDash){
             speedBoost = true;
+            canDash = false;
+            StartCoroutine(SpeedBoostTime());
             StartCoroutine(SpeedBoostCooldown());
         }
         if (speedBoost == true){
@@ -85,10 +88,17 @@ public class PlayerController : MonoBehaviour
         } else{ speedMultiplier = 1; }
 
     }
-    IEnumerator SpeedBoostCooldown(){
+    IEnumerator SpeedBoostTime(){
         yield return new WaitForSeconds(0.01f);
         speedBoost = false;
     }
+
+    IEnumerator SpeedBoostCooldown(){
+        yield return new WaitForSeconds(1.0f);
+        canDash = true;
+        Debug.Log("Can Dash");
+        }
+
     IEnumerator Dizzy(){
         yield return new WaitForSeconds(5.0f);
         stars.SetActive(false);
