@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
 
         if(transform.position.x <= -40){
             Destroy(gameObject);
+            gameManager.UpdateScore(-points*2);
         }
 
     }

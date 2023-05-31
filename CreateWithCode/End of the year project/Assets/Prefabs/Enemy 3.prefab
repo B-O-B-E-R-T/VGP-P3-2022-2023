@@ -125,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2494886627384670395}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 15.95, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 7.17}
   m_Children:
   - {fileID: 2494886627035885684}
@@ -222,8 +222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f63a39d4cd93b42bcf75cbab2c5389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 10
   health: 3
+  points: 5
   explosionEffect: {fileID: 7965674912652388052, guid: 3c5c74f294e6ca64f91f2d67713d1045, type: 3}
 --- !u!1001 &2494886627489379097
 PrefabInstance:

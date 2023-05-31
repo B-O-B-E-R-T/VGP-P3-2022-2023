@@ -24,17 +24,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer();
         CheckBoundaries();
-
-        if (Input.GetKeyDown(KeyCode.G) && canShoot){
-            //https://answers.unity.com/questions/746960/instantiate-object-in-front-of-player.html
-            Instantiate(rocket, playerRb.position+(transform.right*2), transform.rotation);
-
-            canShoot = false;
-            StartCoroutine(RocketCooldown());
-            Debug.Log("Function");
+        if (gameManager.isGameActive){
+            MovePlayer();
+            CheckIfCanShoot();
         }
+        
     }
     //Move the player by arrow key input
     void MovePlayer()
@@ -62,6 +57,17 @@ public class PlayerController : MonoBehaviour
         if (transform.position.x < -bound){
             transform.position = new Vector3(-bound, transform.position.y, transform.position.z);
         }  
+    }
+
+    void CheckIfCanShoot(){
+        if (Input.GetKeyDown(KeyCode.G) && canShoot){
+                //https://answers.unity.com/questions/746960/instantiate-object-in-front-of-player.html
+                Instantiate(rocket, playerRb.position+(transform.right*2), transform.rotation);
+
+                canShoot = false;
+                StartCoroutine(RocketCooldown());
+                Debug.Log("Function");
+            }
     }
     
     private void OnCollisionEnter(Collision collision){
