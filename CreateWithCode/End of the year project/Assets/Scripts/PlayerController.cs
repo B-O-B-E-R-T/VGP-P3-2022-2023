@@ -5,9 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    private float speed = 30.0f;
+    public float speed = 30.0f;
     private float bound = 18;
-    private float rocketCooldown = 1f;
     private bool canShoot = true;
 
     public GameObject rocket;
@@ -72,9 +71,12 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("Enemy")){
+            if (gameManager.isGameActive){
+                gameManager.UpdateLives(-1);
+            }
             Instantiate(explosionEffect, playerRb.position, transform.rotation);
             Destroy(collision.gameObject);
-            gameManager.UpdateLives(-1);
+            
             Debug.Log("Player has collided with an enemy");
         }
     }

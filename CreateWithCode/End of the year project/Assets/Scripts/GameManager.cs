@@ -74,5 +74,6 @@ public class GameManager : MonoBehaviour
     public void GameOver(){
         isGameActive = false;
         gameOverText.gameObject.SetActive(true);
+        lives = 0;
     }
 }
