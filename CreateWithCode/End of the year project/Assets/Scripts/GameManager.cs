@@ -5,12 +5,14 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> enemies;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI livesText;
+    public Button restartButton;
     public bool isGameActive;
 
     private float xEnemySpawn = 40.0f;
@@ -74,6 +76,11 @@ public class GameManager : MonoBehaviour
     public void GameOver(){
         isGameActive = false;
         gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
         lives = 0;
+    }
+
+    public void RestartGame(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

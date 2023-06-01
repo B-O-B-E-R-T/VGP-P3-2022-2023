@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
         if (gameManager.isGameActive){
             MovePlayer();
             CheckIfCanShoot();
+        } else {
+            Destroy(gameObject);
         }
         
     }
@@ -60,13 +62,13 @@ public class PlayerController : MonoBehaviour
 
     void CheckIfCanShoot(){
         if (Input.GetKeyDown(KeyCode.G) && canShoot){
-                //https://answers.unity.com/questions/746960/instantiate-object-in-front-of-player.html
-                Instantiate(rocket, playerRb.position+(transform.right*2), transform.rotation);
+            //https://answers.unity.com/questions/746960/instantiate-object-in-front-of-player.html
+            Instantiate(rocket, playerRb.position+(transform.right*2), transform.rotation);
 
-                canShoot = false;
-                StartCoroutine(RocketCooldown());
-                Debug.Log("Function");
-            }
+            canShoot = false;
+            StartCoroutine(RocketCooldown());
+            Debug.Log("Function");
+        }
     }
     
     private void OnCollisionEnter(Collision collision){

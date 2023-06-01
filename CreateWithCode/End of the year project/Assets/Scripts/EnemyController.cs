@@ -22,15 +22,13 @@ public class EnemyController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
         transform.position += transform.right * speed * Time.deltaTime;
 
-        if(transform.position.x <= -40){
+        if(transform.position.x <= -40 && gameManager.isGameActive){
             Destroy(gameObject);
             gameManager.UpdateScore(-points*2);
         }
-
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -38,7 +36,9 @@ public class EnemyController : MonoBehaviour
             health--;
             Destroy(other.gameObject);
             if (health <= 0){
-                gameManager.UpdateScore(points);
+                if (gameManager.isGameActive){
+                    gameManager.UpdateScore(points);
+                }
                 Instantiate(explosionEffect, objectRb.position, transform.rotation);
                 Destroy(gameObject);
             }
