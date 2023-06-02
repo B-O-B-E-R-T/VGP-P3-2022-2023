@@ -13,22 +13,20 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI livesText;
     public Button restartButton;
+    public GameObject titleScreen;
     public bool isGameActive;
 
     private float xEnemySpawn = 40.0f;
     private float zSpawnRange = 5.0f;
     private float ySpawn = 0f;
     private float enemySpawnRate = 5.0f;
+    private float enemyCountRate = 10.0f;
+    private int enemyCount = 3;
     private int lives;
-    private int score;
+    public int score;
     // Start is called before the first frame update
     void Start()
     {
-        isGameActive = true;
-        score = 0;
-        lives = 3;
-
-        StartCoroutine(SpawnRandomEnemy());
         
     }
 
@@ -36,28 +34,27 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.N)){
-            UpdateLives(-1);
+            UpdateScore(10);
         }
         if (Input.GetKeyDown(KeyCode.M)){
-            UpdateLives(1);
+            UpdateScore(100);
         }
     }
 
     IEnumerator SpawnRandomEnemy(){
-        while (true){
+        while (isGameActive){
             yield return new WaitForSeconds(enemySpawnRate);
             float randomZ;
             int randomIndex;
             Vector3 spawnPos;
 
-            for(int i = 0; i < 3; i++){
+            for(int i = 0; i < enemyCount; i++){
                 randomZ = Random.Range(-zSpawnRange, zSpawnRange);
                 randomIndex = Random.Range(0, enemies.Count);
                 spawnPos = new Vector3(xEnemySpawn, ySpawn, randomZ);
                 Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].gameObject.transform.rotation);
             }
         }
-        
     }
 
     public void UpdateScore(int scoreToAdd){
@@ -82,5 +79,23 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame(){
+        isGameActive = true;
+        score = 0;
+        lives = 3;
+        titleScreen.gameObject.SetActive(false);
+
+        StartCoroutine(SpawnRandomEnemy());
+        StartCoroutine(IncreaseEnemyCount());
+    }
+
+    IEnumerator IncreaseEnemyCount(){
+        while (isGameActive){
+            yield return new WaitForSeconds(enemyCountRate);
+            enemyCountRate += 5.0f;
+            enemyCount++;            
+        }
     }
 }

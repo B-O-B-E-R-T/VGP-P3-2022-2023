@@ -27,10 +27,7 @@ public class PlayerController : MonoBehaviour
         if (gameManager.isGameActive){
             MovePlayer();
             CheckIfCanShoot();
-        } else {
-            Destroy(gameObject);
         }
-        
     }
     //Move the player by arrow key input
     void MovePlayer()
