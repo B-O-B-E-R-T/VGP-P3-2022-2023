@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI rulesText;
     public Button restartButton;
     public GameObject titleScreen;
+    public GameObject player;
     public bool isGameActive;
 
     private float xEnemySpawn = 40.0f;
@@ -33,12 +35,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N)){
-            UpdateScore(10);
-        }
-        if (Input.GetKeyDown(KeyCode.M)){
-            UpdateScore(100);
-        }
+
     }
 
     IEnumerator SpawnRandomEnemy(){
@@ -86,6 +83,8 @@ public class GameManager : MonoBehaviour
         score = 0;
         lives = 3;
         titleScreen.gameObject.SetActive(false);
+        rulesText.gameObject.SetActive(false);
+        player.gameObject.SetActive(true);
 
         StartCoroutine(SpawnRandomEnemy());
         StartCoroutine(IncreaseEnemyCount());

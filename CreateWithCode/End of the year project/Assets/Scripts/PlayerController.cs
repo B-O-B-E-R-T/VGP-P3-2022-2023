@@ -64,7 +64,6 @@ public class PlayerController : MonoBehaviour
 
             canShoot = false;
             StartCoroutine(RocketCooldown());
-            Debug.Log("Function");
         }
     }
     
