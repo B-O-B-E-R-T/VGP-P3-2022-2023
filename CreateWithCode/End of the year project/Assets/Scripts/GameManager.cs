@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> enemies;
+    public GameObject[] powerupPrefabs; 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI livesText;
@@ -54,6 +55,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+     IEnumerator SpawnRandomPowerup(){
+        while (isGameActive){
+            yield return new WaitForSeconds(1.0f);
+            float randomZ = Random.Range(-20, 20);
+            float randomX = Random.Range(-20, 20);
+            int randomPowerup = Random.Range(0, powerupPrefabs.Length);
+            Vector3 spawnPos = new Vector3(randomX, ySpawn, randomZ);
+
+            Instantiate(powerupPrefabs[randomPowerup], spawnPos, powerupPrefabs[randomPowerup].transform.rotation);
+        }
+    }
+
     public void UpdateScore(int scoreToAdd){
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
@@ -88,6 +101,7 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(SpawnRandomEnemy());
         StartCoroutine(IncreaseEnemyCount());
+        StartCoroutine(SpawnRandomPowerup());
     }
 
     IEnumerator IncreaseEnemyCount(){

@@ -85,5 +85,23 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Thing");
     }
 
+    private void OnTriggerEnter(Collider other){
+        if (other.CompareTag("Powerup")){
+            /*
+            hasPowerup = true;
+            currentPowerup = other.gameObject.GetComponent<Powerup>().powerupType;
+            powerupIndicator.gameObject.SetActive(true);
+            */
+            Destroy(other.gameObject);
+            /*
+            if(powerupCountdown != null)
+            {
+            StopCoroutine(powerupCountdown);
+            }
+            powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
+            */
+        }
+    }
+
     
 }
