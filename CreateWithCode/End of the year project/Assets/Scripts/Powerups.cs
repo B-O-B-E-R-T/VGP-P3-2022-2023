@@ -8,6 +8,7 @@ public class Powerups : MonoBehaviour
 {
 
     public PowerupType powerupType;
+    public ParticleSystem explosionParticle;
     // Start is called before the first frame update
     void Start()
     {
