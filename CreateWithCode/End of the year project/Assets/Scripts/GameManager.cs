@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
      IEnumerator SpawnRandomPowerup(){
         while (isGameActive){
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(10.0f);
             float randomZ = Random.Range(-5, 5);
             float randomX = Random.Range(-15, 15);
             int randomPowerup = Random.Range(0, powerupPrefabs.Length);

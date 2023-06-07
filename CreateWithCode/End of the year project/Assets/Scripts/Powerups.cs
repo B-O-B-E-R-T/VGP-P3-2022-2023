@@ -20,4 +20,11 @@ public class Powerups : MonoBehaviour
     {
         
     }
+    
+    private void OnTriggerEnter(Collider other){
+        if (other.CompareTag("Player")){
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+            Destroy(gameObject);
+        }
+    }
 }

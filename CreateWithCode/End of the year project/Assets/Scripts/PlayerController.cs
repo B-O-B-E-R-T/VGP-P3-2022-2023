@@ -92,7 +92,6 @@ public class PlayerController : MonoBehaviour
             currentPowerup = other.gameObject.GetComponent<Powerup>().powerupType;
             powerupIndicator.gameObject.SetActive(true);
             */
-            Destroy(other.gameObject);
             /*
             if(powerupCountdown != null)
             {
