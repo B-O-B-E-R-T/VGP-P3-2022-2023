@@ -7,7 +7,7 @@ public class Rocket : MonoBehaviour
     public float speed = 5.0f;
     private Rigidbody objectRb;
 
-    public GameObject hitEffect;
+    public ParticleSystem hitEffect;
 
     // Start is called before the first frame update
     void Start()

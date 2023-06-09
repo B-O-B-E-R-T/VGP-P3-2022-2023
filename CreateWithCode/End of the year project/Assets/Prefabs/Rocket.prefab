@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  hitEffect: {fileID: 3874521168595315137, guid: f5638b0c0c510b245ae8812e87b5d802, type: 3}
+  hitEffect: {fileID: 206717684224051745, guid: ad13a76e0ac8ce2468a07d5dc5a9cbf0, type: 3}
 --- !u!54 &2765403222243199003
 Rigidbody:
   m_ObjectHideFlags: 0
