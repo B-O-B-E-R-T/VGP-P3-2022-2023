@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
     public float speed = 30.0f;
     private float bound = 18;
     private bool canShoot = true;
+    public bool hasPowerup;
 
     public GameObject rocket;
     public GameObject explosionEffect;
+    public ParticleSystem explosionParticle;
 
     private GameManager gameManager; 
     // Start is called before the first frame update
@@ -59,6 +61,10 @@ public class PlayerController : MonoBehaviour
 
     void CheckIfCanShoot(){
         if (Input.GetKeyDown(KeyCode.G) && canShoot){
+            if (hasPowerup){
+                Instantiate(rocket, playerRb.position+(transform.right*2)+(transform.forward*2), transform.rotation);
+                Instantiate(rocket, playerRb.position+(transform.right*2)+(transform.forward*-2), transform.rotation);
+            }
             //https://answers.unity.com/questions/746960/instantiate-object-in-front-of-player.html
             Instantiate(rocket, playerRb.position+(transform.right*2), transform.rotation);
 
@@ -87,8 +93,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Powerup")){
-            /*
             hasPowerup = true;
+            Destroy(other.gameObject);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+
+            /*
             currentPowerup = other.gameObject.GetComponent<Powerup>().powerupType;
             powerupIndicator.gameObject.SetActive(true);
             */

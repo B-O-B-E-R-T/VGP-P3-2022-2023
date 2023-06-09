@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8980872787524479387}
   - component: {fileID: -20356148290041954}
   - component: {fileID: -6233305840333524786}
+  - component: {fileID: 1443041814380149086}
   m_Layer: 0
   m_Name: Power Up 2
   m_TagString: Powerup
@@ -128,6 +129,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupType: 0
   explosionParticle: {fileID: 19811986, guid: 6636b3078b0905e489f698a11b7a6b6b, type: 3}
+--- !u!114 &1443041814380149086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980872787524479384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c548013dabab74db311b8054d2b9f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRotationSpeed: 0
+  yRotationSpeed: 90
+  zRotationSpeed: 0
 --- !u!1001 &8980872786728148062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -205,28 +221,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 45781cf87eda4134e8f3080cbbac9cf6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb1bef3d4abc9344b89436369737113, type: 3}
---- !u!1 &8980872786728052042 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 178452, guid: ceb1bef3d4abc9344b89436369737113, type: 3}
-  m_PrefabInstance: {fileID: 8980872786728148062}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8980872786727722234 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 491684, guid: ceb1bef3d4abc9344b89436369737113, type: 3}
   m_PrefabInstance: {fileID: 8980872786728148062}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8980872788713039296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8980872786728052042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8c548013dabab74db311b8054d2b9f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xRotationSpeed: 90
-  yRotationSpeed: 0
-  zRotationSpeed: 0

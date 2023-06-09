@@ -27,9 +27,12 @@ public class EnemyController : MonoBehaviour
         UpdateSpeed();
         transform.position += transform.right * speed * Time.deltaTime * speedMultiplier;
 
-        if(transform.position.x <= -40 && gameManager.isGameActive){
+        if(transform.position.x <= -40){
             Destroy(gameObject);
-            gameManager.UpdateScore(-points*2);
+            if (gameManager.isGameActive){
+                gameManager.UpdateScore(-points*2);
+            }
+            
         }
     }
 

@@ -8,7 +8,7 @@ public class Powerups : MonoBehaviour
 {
 
     public PowerupType powerupType;
-    public ParticleSystem explosionParticle;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +20,8 @@ public class Powerups : MonoBehaviour
     {
         
     }
-    
-    private void OnTriggerEnter(Collider other){
-        if (other.CompareTag("Player")){
-            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-            Destroy(gameObject);
-        }
+
+    void OnDestroy(){
+        
     }
 }
