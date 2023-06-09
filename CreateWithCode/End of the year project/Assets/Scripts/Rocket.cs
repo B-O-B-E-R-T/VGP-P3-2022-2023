@@ -13,7 +13,8 @@ public class Rocket : MonoBehaviour
     void Start()
     {
         objectRb = GetComponent<Rigidbody>();
-        objectRb.AddForce(Vector3.right * speed * 5, ForceMode.Impulse);
+        
+        objectRb.AddForce(Vector3.right * speed, ForceMode.Impulse);
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class Rocket : MonoBehaviour
         if(transform.position.x >= 40 || transform.position.x <= -40){
             Destroy(gameObject);
         }
+        transform.position += transform.right * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other) {

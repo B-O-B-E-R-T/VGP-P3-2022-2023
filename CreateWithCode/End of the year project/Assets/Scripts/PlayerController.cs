@@ -62,8 +62,9 @@ public class PlayerController : MonoBehaviour
     void CheckIfCanShoot(){
         if (Input.GetKeyDown(KeyCode.G) && canShoot){
             if (hasPowerup){
-                Instantiate(rocket, playerRb.position+(transform.right*2)+(transform.forward*2), transform.rotation);
-                Instantiate(rocket, playerRb.position+(transform.right*2)+(transform.forward*-2), transform.rotation);
+                //https://answers.unity.com/questions/1272923/instantiate-with-object-rotation-180-rotation-offs.html
+                Instantiate(rocket, playerRb.position+(transform.right*2)+(transform.forward*1), transform.rotation * Quaternion.Euler (0f, 345f, 0f));
+                Instantiate(rocket, playerRb.position+(transform.right*2)+(transform.forward*-1), transform.rotation * Quaternion.Euler (0f, 15f, 0f));
             }
             //https://answers.unity.com/questions/746960/instantiate-object-in-front-of-player.html
             Instantiate(rocket, playerRb.position+(transform.right*2), transform.rotation);
