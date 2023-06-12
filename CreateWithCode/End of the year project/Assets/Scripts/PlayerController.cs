@@ -10,11 +10,19 @@ public class PlayerController : MonoBehaviour
     private bool canShoot = true;
     public bool hasPowerup;
 
+    public PowerupType currentPowerup = PowerupType.None;
+    private Coroutine powerupCountdown;
+
+
     public GameObject rocket;
     public GameObject explosionEffect;
+    public GameObject powerupIndicator;
+    public GameObject line;
+    public GameObject protectionSphere;
     public ParticleSystem explosionParticle;
 
     private GameManager gameManager; 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +38,13 @@ public class PlayerController : MonoBehaviour
             MovePlayer();
             CheckIfCanShoot();
         }
+
+        if (currentPowerup == PowerupType.Protect){
+            protectionSphere.gameObject.SetActive(true);
+        } else{
+            protectionSphere.gameObject.SetActive(false);
+        }
+        
     }
     //Move the player by arrow key input
     void MovePlayer()
@@ -39,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
         playerRb.AddForce(Vector3.forward * speed * verticalInput);
         playerRb.AddForce(Vector3.right * speed * horizontalInput);
+
+        powerupIndicator.transform.position = transform.position;
 
         //https://forum.unity.com/threads/how-to-make-player-object-slightly-tilt-as-it-moves-left-and-right.121725/
         float x = Input.GetAxis("Vertical") * 15.0f; 
@@ -61,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     void CheckIfCanShoot(){
         if (Input.GetKeyDown(KeyCode.G) && canShoot){
-            if (hasPowerup){
+            if (currentPowerup == PowerupType.Multiplier){
                 //https://answers.unity.com/questions/1272923/instantiate-with-object-rotation-180-rotation-offs.html
                 Instantiate(rocket, playerRb.position+(transform.right*2)+(transform.forward*1), transform.rotation * Quaternion.Euler (0f, 345f, 0f));
                 Instantiate(rocket, playerRb.position+(transform.right*2)+(transform.forward*-1), transform.rotation * Quaternion.Euler (0f, 15f, 0f));
@@ -76,7 +93,7 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("Enemy")){
-            if (gameManager.isGameActive){
+            if (gameManager.isGameActive && currentPowerup != PowerupType.Protect){
                 gameManager.UpdateLives(-1);
             }
             Instantiate(explosionEffect, playerRb.position, transform.rotation);
@@ -95,21 +112,25 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if (other.CompareTag("Powerup")){
             hasPowerup = true;
-            Destroy(other.gameObject);
-            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-
-            /*
-            currentPowerup = other.gameObject.GetComponent<Powerup>().powerupType;
+            currentPowerup = other.gameObject.GetComponent<Powerups>().powerupType;
             powerupIndicator.gameObject.SetActive(true);
-            */
-            /*
+            Destroy(other.gameObject);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);            
+            
             if(powerupCountdown != null)
             {
             StopCoroutine(powerupCountdown);
             }
             powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
-            */
+            
         }
+    }
+
+    IEnumerator PowerupCountdownRoutine(){
+        yield return new WaitForSeconds(7);
+        hasPowerup = false;
+        currentPowerup = PowerupType.None;
+        powerupIndicator.gameObject.SetActive(false);
     }
 
     
