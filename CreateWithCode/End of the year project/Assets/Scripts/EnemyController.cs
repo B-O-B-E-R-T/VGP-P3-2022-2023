@@ -47,6 +47,9 @@ public class EnemyController : MonoBehaviour
                 Instantiate(explosionEffect, objectRb.position, transform.rotation);
                 Destroy(gameObject);
             }
+        } else if(other.gameObject.CompareTag("Barrier")){
+            Instantiate(explosionEffect, objectRb.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
     private void UpdateSpeed(){

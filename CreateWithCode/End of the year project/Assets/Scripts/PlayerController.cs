@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private float bound = 18;
     private bool canShoot = true;
     public bool hasPowerup;
+    private float powerupTime = 7.0f;
 
     public PowerupType currentPowerup = PowerupType.None;
     private Coroutine powerupCountdown;
@@ -39,10 +40,19 @@ public class PlayerController : MonoBehaviour
             CheckIfCanShoot();
         }
 
+        powerupIndicator.transform.position = transform.position;
+
+
         if (currentPowerup == PowerupType.Protect){
             protectionSphere.gameObject.SetActive(true);
         } else{
             protectionSphere.gameObject.SetActive(false);
+        }
+
+        if (currentPowerup == PowerupType.Line){
+            line.gameObject.SetActive(true);
+        } else{
+            line.gameObject.SetActive(false);
         }
         
     }
@@ -55,8 +65,7 @@ public class PlayerController : MonoBehaviour
         playerRb.AddForce(Vector3.forward * speed * verticalInput);
         playerRb.AddForce(Vector3.right * speed * horizontalInput);
 
-        powerupIndicator.transform.position = transform.position;
-
+        
         //https://forum.unity.com/threads/how-to-make-player-object-slightly-tilt-as-it-moves-left-and-right.121725/
         float x = Input.GetAxis("Vertical") * 15.0f; 
         Vector3 euler = transform.localEulerAngles;
@@ -113,6 +122,13 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Powerup")){
             hasPowerup = true;
             currentPowerup = other.gameObject.GetComponent<Powerups>().powerupType;
+            if (currentPowerup == PowerupType.Multiplier){
+                powerupTime = 5;
+            } else if(currentPowerup == PowerupType.Protect){
+                powerupTime = 10;
+            } else if(currentPowerup == PowerupType.Line){
+                powerupTime = 20;
+            }
             powerupIndicator.gameObject.SetActive(true);
             Destroy(other.gameObject);
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);            
@@ -127,7 +143,7 @@ public class PlayerController : MonoBehaviour
     }
 
     IEnumerator PowerupCountdownRoutine(){
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(powerupTime);
         hasPowerup = false;
         currentPowerup = PowerupType.None;
         powerupIndicator.gameObject.SetActive(false);
