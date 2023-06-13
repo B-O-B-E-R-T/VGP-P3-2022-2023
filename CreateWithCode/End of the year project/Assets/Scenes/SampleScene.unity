@@ -2839,7 +2839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15147dc625455ac4e8f73f9a6227b1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 25
   hasPowerup: 0
   currentPowerup: 0
   rocket: {fileID: 2765403222243198993, guid: 3a96e6fbd31f88e489edd1706991325c, type: 3}
