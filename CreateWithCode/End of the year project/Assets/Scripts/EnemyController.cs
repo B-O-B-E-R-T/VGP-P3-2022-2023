@@ -55,7 +55,7 @@ public class EnemyController : MonoBehaviour
     private void UpdateSpeed(){
         speedMultiplier = 1+ gameManager.score/250;
         if (speedMultiplier <= 0){
-            speedMultiplier = 0;
+            speedMultiplier = 1;
         }
     }
 

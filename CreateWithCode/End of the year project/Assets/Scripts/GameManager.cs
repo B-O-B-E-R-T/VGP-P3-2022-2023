@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         gameOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
+        player.gameObject.SetActive(false);
+
         lives = 0;
     }
 
