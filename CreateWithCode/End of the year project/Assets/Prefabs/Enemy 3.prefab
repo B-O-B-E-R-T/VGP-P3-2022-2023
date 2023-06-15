@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 2494886627384670397}
   - component: {fileID: 2494886627384670394}
   - component: {fileID: 2494886627384670369}
+  - component: {fileID: -439274368566734290}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -225,7 +226,21 @@ MonoBehaviour:
   speed: 10
   health: 3
   points: 5
+  speedMultiplier: 0
   explosionEffect: {fileID: 7965674912652388052, guid: 3c5c74f294e6ca64f91f2d67713d1045, type: 3}
+--- !u!114 &-439274368566734290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494886627384670395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4439224c64ad46a4082df6c73e0980a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 20
 --- !u!1001 &2494886627489379097
 PrefabInstance:
   m_ObjectHideFlags: 0
